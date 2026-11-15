@@ -545,8 +545,7 @@ box-shadow:
 /* ------------------------- YouTube #FF0000 -------------------------*/
 
 .grid-card--youtube {
-    /* structure */
-    display: inline-flex;
+    display: none; /* ------- Temporarily hidden card ------- */
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
