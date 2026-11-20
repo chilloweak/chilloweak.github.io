@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chilloweak | All my links</title>
-    <link rel="stylesheet" href="style.css">
-    <meta property="og:title" content="chilloweak | Все мои ссылки">
-    <meta property="og:description" content="Добро пожаловать в мой мир.">
+    <title data-i18n-title="pageTitle">chilloweak | Мои ссылки</title>
+    <meta property="og:title" id="ogTitle" content="chilloweak | Мои ссылки">
+    <meta property="og:description" id="ogDescription" content="Добро пожаловать в мой мир.">
     <meta property="og:image" content="https://chilloweak.github.io">
     <meta property="og:url" content="https://chilloweak.github.io">
     <meta name="twitter:card" content="summary_large_image">
@@ -14,41 +13,91 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        (function () {
+            var saved = localStorage.getItem('lang');
+
+            if (!saved) {
+                var browserLang = (navigator.language || navigator.userLanguage || '').split('-')[0].toLowerCase();
+                saved = (browserLang === 'ru') ? 'RU' : 'ENG';
+            }
+
+            document.documentElement.lang = saved.toLowerCase();
+            var titles = { RU: 'chilloweak | Мои ссылки', ENG: 'chilloweak | My links' };
+            document.title = titles[saved] || document.title;
+        })();
+    </script>
 </head>
 <body>
     <div class="grid-container">
+        <div class="lang-switcher" id="languageSwitcher">
+            <div class="lang-switcher__selected"
+                id="selectedLang"
+                tabindex="0"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false">
+                RU
+            </div>
+            <ul class="lang-switcher__dropdown" role="menu" aria-label="Language selection">
+                <li class="active" data-lang="RU" role="menuitem" tabindex="0">RU</li>
+                <li data-lang="ENG" role="menuitem" tabindex="0">ENG</li>
+            </ul>
+        </div>
         <div class="chilloweak-header">
             <h1>chilloweak</h1>
         </div>
-        <div class="link-grid">
-            <a href="https://vk.ru/chilloweakk" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--vk">
-                <div class="card-title">Моё сообщество в <img class="icon-inline" src="img/vk_icon.svg"></div>
-            </a>
-            <a href="https://twitch.tv/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--twitch">
-                <div class="crt">
-                    <div class="crt-content">
-                        <div class="card-title">Стримы на твиче <img class="icon-inline" src="img/twitch_icon.svg"></div>
+        <section class="ru-content">
+            <div class="link-grid">
+                <a href="https://vk.ru/chilloweakk" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--vk">
+                    <div class="card-title">Моё сообщество в <img class="icon-inline" src="img/vk_icon.svg"></div>
+                </a>
+                <a href="https://twitch.tv/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--twitch">
+                    <div class="crt">
+                        <div class="crt-content">
+                            <div class="card-title">Стримы на твиче <img class="icon-inline" src="img/twitch_icon.svg"></div>
+                        </div>
                     </div>
+                </a>
+                <a href="https://t.me/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--telegram">
+                    <img class="icon-inline-telegram" src="img/telegram_icon.svg">
+                    <div class="card-title">Telegram</div>
+                </a>
+                <a href="https://boosty.to/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--boosty">
+                    <img class="icon-inline-boosty" src="img/boosty.svg">
+                    <div class="card-title">boosty</div>
+                </a>
+                <a href="https://max.ru/channel_chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--max">
+                    <img class="icon-inline-max" src="img/max_icon.svg">
+                    <div class="card-title">Макс</div>
+                </a>
+                <a href="https://live.vkvideo.ru/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--vkvideolive">
+                    <div class="vklive-scan">
+                        <div class="card-title">Стримы на<br>VK Видео Live</div>
+                    </div>
+                </a>
+            </div>
+            </section>
+            <section class="eng-content">
+                <div class="link-grid">
+                    <a href="https://x.com/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--xtwitter">
+                        <img class="icon-inline-max" src="img/x-twitter_icon.svg">
+                    </a>
+                    <a href="https://bsky.app/profile/chilloweak.bsky.social" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--bluesky">
+                        <img class="icon-inline-bluesky" src="img/bluesky_icon.svg">
+                        <div class="card-title">Bluesky</div>
+                    </a>
+                    <a href="https://discord.gg/eVxUYf7TvV" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--discord">
+                        <div class="card-title">Discord Server</div>
+                    </a>
                 </div>
-            </a>
-            <a href="https://t.me/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--telegram">
-                <img class="icon-inline-telegram" src="img/telegram_icon.svg">
-                <div class="card-title">Telegram</div>
-            </a>
-            <a href="https://boosty.to/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--boosty">
-                <img class="icon-inline-boosty" src="img/boosty.svg">
-                <div class="card-title">boosty</div>
-            </a>
-            <a href="https://max.ru/channel_chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--max">
-                <img class="icon-inline-max" src="img/max_icon.svg">
-                <div class="card-title">Макс</div>
-            </a>
-            <a href="https://live.vkvideo.ru/chilloweak" target="_blank" rel="noopener noreferrer" class="grid-card grid-card--vkvideolive">
-                <div class="vklive-scan">
-                    <div class="card-title">Стримы на<br>VK Видео Live</div>
-                </div>
-            </a>
+            </section>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

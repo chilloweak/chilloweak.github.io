@@ -156,16 +156,166 @@ body {
     color: var(--accent);
 }
 
+/* ---------- Language switcher ---------- */
+
+.lang-switcher {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    width: 90px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+    position: fixed;
+    top: 16px;
+    right: -100px;
+    z-index: 10;
+}
+
+.lang-switcher__selected {
+    background-color: #0f0f0f;
+    color: #dfdfdf;
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease;
+    line-height: 1.2;
+    text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.lang-switcher__selected::after {
+    content: "▾";
+    font-size: 0.9rem;
+    color: #9c9c9c;
+    margin-left: 8px;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+}
+
+.lang-switcher.open .lang-switcher__selected::after {
+    transform: translateY(-1px) rotate(180deg);
+}
+
+.lang-switcher__selected:hover {
+    background-color: #1d1d1d;
+}
+
+.lang-switcher__selected:focus-visible {
+    outline: 2px solid #2c3e50;
+    outline-offset: 2px;
+}
+
+.lang-switcher__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background-color: #161616;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.05);
+    list-style: none;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: 100;
+    color: #eeeeee;
+}
+
+.lang-switcher.open .lang-switcher__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-switcher__dropdown li {
+    padding: 10px 16px;
+    background-color: #141414;
+    color: #acacac;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background 0.12s ease;
+    border-bottom: 1px solid #383838;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.lang-switcher__dropdown li:last-child {
+    border-bottom: none;
+}
+
+.lang-switcher__dropdown li:hover {
+    background-color: #111111;
+}
+
+.lang-switcher__dropdown li.active {
+    font-weight: 600;
+    background-color: #111111;
+}
+
+.lang-switcher__dropdown li.active::after {
+    content: "✓";
+    color: #e6e6e6;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+
+/* ============ Language visibility switch ============ */
+.ru-content  { display: block; }
+.eng-content { display: none; }
+
+html[lang="eng"] .ru-content  { display: none; }
+html[lang="eng"] .eng-content { display: block; }
+
+
+
 @media (min-width: 67.5em) {
     :root {
         --card-size: 220px;
     }
 }
 
+@media (max-width: 55em) {
+        .chilloweak-header {
+        padding-bottom: 60px;
+    }
+        .lang-switcher {
+        top: 110px;
+        right: 16px;
+        transform: none;
+    }
+}
+
+
 @media (max-width: 37.5em) {
     .link-grid {
         grid-template-columns: repeat(2, auto);
         gap: 20px;
+    }
+
+    .chilloweak-header {
+        padding-bottom: 60px;
+    }
+
+    .lang-switcher {
+        top: 110px;
+        right: 16px;
+
     }
 }
 
@@ -743,4 +893,159 @@ mix-blend-mode: screen;
 @keyframes scanvklive {
     from { background-position-y: 100px; }
     to   { background-position-y: 0px; }
+}
+
+/* ---------------------------------- X Twitter ---------------------------------- */
+
+.grid-card--xtwitter {
+    display: flex;
+    position: relative;
+    border-radius: 48%;
+
+    background: #000000;
+
+    box-shadow:
+        inset 0 -9px 14px rgba(0, 0, 0, 0.75),
+        inset 0 9px 12px rgba(200, 226, 255, 0.22),
+        inset 0 2px 3px rgba(235, 236, 255, 0.28),
+        inset 0 0 0 1px rgba(159, 164, 172, 0.28),
+        inset 0 0 22px rgba(34, 35, 36, 0.55);
+
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.grid-card--xtwitter:active {
+    background:
+        radial-gradient(ellipse at 32% 18%, rgba(220, 235, 255, 0.14) 0%, rgba(170, 190, 255, 0.07) 45%, transparent 90%),
+        radial-gradient(ellipse at 70% 100%, rgba(74, 76, 80, 0.95) 0%, transparent 90%),
+        radial-gradient(at 18% 18%, #0c1219, transparent 70%),
+        radial-gradient(at 90% 8%, rgba(237, 249, 255, 0.55), transparent 55%),
+        #0a0f16;
+
+    box-shadow:
+        inset 0 -9px 14px rgba(0, 0, 0, 0.85),
+        inset 0 9px 12px rgba(200, 226, 255, 0.38),
+        inset 0 2px 3px rgba(235, 236, 255, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+        inset 0 0 26px rgba(139, 139, 139, 0.65)
+
+    transform: scale(0.98);
+}
+
+/* ---------------------------------- Discord ---------------------------------- */
+
+.grid-card--discord {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.05rem 2.6rem;
+    cursor: pointer;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45), 0 -1px 1px rgba(255, 255, 255, 0.15);
+
+    background:
+        radial-gradient(ellipse at 32% 18%, rgba(255, 255, 255, 0.3) 0%, rgba(200, 210, 255, 0.08) 45%, transparent 70%),
+        radial-gradient(ellipse at 70% 100%, rgba(20, 0, 60, 0.45) 0%, transparent 65%),
+        linear-gradient(160deg, #5865f2 0%, #4752c4 45%, #3c45a5 100%);
+
+    box-shadow:
+        inset 0 -9px 14px rgba(20, 0, 60, 0.45),
+        inset 0 9px 12px rgba(200, 210, 255, 0.35),
+        inset 0 2px 3px rgba(230, 235, 255, 0.5),
+        inset 0 0 0 1px rgba(30, 20, 80, 0.35),
+        inset 0 0 16px rgba(20, 0, 60, 0.3);
+
+    border: none;
+    transition: box-shadow 0.13s ease, background 0.13s ease, transform 0.08s ease;
+}
+
+.grid-card--discord:hover {
+    box-shadow:
+        inset 0 -9px 14px rgba(20, 0, 60, 0.5),
+        inset 0 11px 14px rgba(210, 220, 255, 0.45),
+        inset 0 2px 3px rgba(240, 245, 255, 0.6),
+        inset 0 0 0 1px rgba(30, 20, 80, 0.35),
+        inset 0 0 18px rgba(20, 0, 60, 0.3);
+}
+
+.grid-card--discord:active {
+    background:
+        radial-gradient(ellipse at 32% 18%, rgba(230, 235, 255, 0.15) 0%, transparent 65%),
+        radial-gradient(ellipse at 70% 100%, rgba(10, 0, 40, 0.55) 0%, transparent 70%),
+        linear-gradient(160deg, #4752c4 0%, #3c45a5 50%, #2e3580 100%);
+
+    box-shadow:
+        inset 0 -13px 18px rgba(10, 0, 40, 0.65),
+        inset 0 7px 9px rgba(200, 210, 255, 0.15),
+        inset 0 1px 2px rgba(230, 235, 255, 0.25),
+        inset 0 0 0 1px rgba(20, 10, 60, 0.45),
+        inset 0 0 22px rgba(10, 0, 40, 0.5);
+    transform: scale(0.98);
+}
+
+.grid-card--discord:focus-visible {
+    outline: none;
+    box-shadow:
+        inset 0 -9px 14px rgba(20, 0, 60, 0.45),
+        inset 0 9px 12px rgba(200, 210, 255, 0.35),
+        inset 0 2px 3px rgba(230, 235, 255, 0.5),
+        inset 0 0 0 2px rgba(180, 190, 255, 0.9),
+        inset 0 0 16px rgba(20, 0, 60, 0.3);
+}
+
+.icon-inline-discord {
+    width: 1.6em;
+    height: 1.6em;
+    display: inline-block;
+}
+
+/* ======================== Bluesky ======================== */
+
+.grid-card--bluesky {
+    background:
+        radial-gradient(120% 120% at 20% 15%, rgba(255, 255, 255, 0.40) 0%, transparent 45%),
+        linear-gradient(135deg,
+        #001e42 0%,
+        #003fa3 22%,
+        #0070e0 48%,
+        #2f9bff 74%,
+        #b9e2ff 100%
+    );
+
+    box-shadow:
+        inset 0 -9px 14px rgba(255, 255, 255, 0.12),
+        inset 0 9px 12px rgba(255, 255, 255, 0.55),
+        inset 0 2px 3px rgba(255, 255, 255, 0.90),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        inset 0 0 22px rgba(160, 220, 255, 0.30),
+        0 10px 30px rgba(0, 50, 120, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+}
+
+.grid-card--bluesky:active {
+    background:
+        radial-gradient(ellipse at 32% 18%, rgba(215, 240, 255, 0.25) 0%, transparent 65%),
+        radial-gradient(ellipse at 70% 100%, rgba(0, 20, 55, 0.55) 0%, transparent 70%),
+        linear-gradient(160deg, #0070e0 0%, #0060c4 50%, #003f8c 100%);
+
+    box-shadow:
+        inset 0 -13px 18px rgba(0, 15, 45, 0.75),
+        inset 0 7px 9px rgba(190, 230, 255, 0.20),
+        inset 0 1px 2px rgba(230, 245, 255, 0.30),
+        inset 0 0 0 1px rgba(0, 45, 95, 0.45),
+        inset 0 0 22px rgba(0, 25, 65, 0.55);
+    transform: scale(0.98);
+}
+
+.icon-inline-bluesky {
+    width: 2.7em;
+    height: 2.7em;
+    display: inline-block;
 }
