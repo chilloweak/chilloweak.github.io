@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Unbounded';
-    src: url(fonts/Unbounded-Medium-subset.woff2) format('woff2');
+    src: url(../fonts/Unbounded-Medium-subset.woff2) format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -463,7 +463,7 @@ html[lang="eng"] .eng-content { display: block; }
     padding: var(--card-inset);
     gap: 10px;
     background: #0a0a0a;
-    background: url(img/chilloweak_icon.png);
+    background: url(../img/chilloweak_icon.png);
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow:
