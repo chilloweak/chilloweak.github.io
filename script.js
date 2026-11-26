@@ -4,13 +4,11 @@
     const translations = {
         RU: {
             ogTitle: 'chilloweak | Мои ссылки',
-            ogDescription: 'Добро пожаловать в мой мир.',
             ogLocale: 'ru_RU',
             pageTitle: 'chilloweak | Мои ссылки',
         },
         ENG: {
             ogTitle: 'chilloweak | My links',
-            ogDescription: 'Welcome to my world.',
             ogLocale: 'en_US',
             pageTitle: 'chilloweak | My links',
         },
@@ -43,9 +41,6 @@
 
             const ogTitle = document.getElementById('ogTitle');
             if (ogTitle) ogTitle.setAttribute('content', dict.ogTitle);
-
-            const ogDescription = document.getElementById('ogDescription');
-            if (ogDescription) ogDescription.setAttribute('content', dict.ogDescription);
 
             const ogLocale = document.getElementById('ogLocale');
             if (ogLocale) ogLocale.setAttribute('content', dict.ogLocale);
